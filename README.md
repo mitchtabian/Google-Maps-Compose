@@ -21,3 +21,11 @@ Display your location (if you've accepted the permission).
 <br>
 <br>
 <img src="art/your_location.png" width="25%">
+
+# Notes / Gotchas
+1. You will need to enable billing on your google cloud console to complete this example. You won't be charged anything as long as you stay under the daily request limit. Then add your API key to `local.properties`.
+```
+GOOGLE_MAPS_API_KEY=<YOUR_KEY>
+```
+2. If the user declines the permission request twice they will need to manually enable the permission from system settings for the app (or uninstall and reinstall). That's a whole other topic - I'm just assuming they accept in this example.
+3. Need `androidx.appcompat:appcompat` dependency for `MapEffect`. I was seeing an `AppCompatTextView` exception being thrown if I didn't include it.
