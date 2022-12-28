@@ -4,17 +4,20 @@ This has changed within the last year or so. Now there's a new [compose API for 
 
 # Features
 
-### Permissions
+## Permissions
 Asking for `ACCESS_FINE_LOCATION` permission. This is required to show the users location on the map.
+<br>
 <br>
 <img src="art/location_permission.png" width="25%">
 
-### Polygons with markers
+## Polygons with markers
 Display polygons with markers.
+<br>
 <br>
 <img src="art/polygon_with_marker.png" width="25%">
 
-### Your location
+## Your location
 Display your location (if you've accepted the permission).
+<br>
 <br>
 <img src="art/your_location.png" width="25%">
