@@ -29,3 +29,11 @@ GOOGLE_MAPS_API_KEY=<YOUR_KEY>
 ```
 2. If the user declines the permission request twice they will need to manually enable the permission from system settings for the app (or uninstall and reinstall). That's a whole other topic - I'm just assuming they accept in this example.
 3. Need `androidx.appcompat:appcompat` dependency for `MapEffect`. I was seeing an `AppCompatTextView` exception being thrown if I didn't include it.
+
+# Dependencies
+1. Google maps SDK for Android https://developers.google.com/maps/documentation/android-sdk/config
+2. Utility library https://developers.google.com/maps/documentation/android-sdk/utility/setup
+3. Maps android kotlin extensions https://developers.google.com/maps/documentation/android-sdk/ktx
+    - note there is also a ktx version of the utility library listed above.
+4. Google maps for compose library
+    - https://github.com/googlemaps/android-maps-compose
