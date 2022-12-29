@@ -56,7 +56,7 @@ GOOGLE_MAPS_API_KEY=<YOUR_KEY>
 <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 ```
-9. If it's not working for you go watch the video I made on youtube. I might have forgot something in these steps.
+9. If it's not working for you go watch the video I made on youtube. I might have forgot something in these steps. https://www.youtube.com/watch?v=hhSTYK7I78c
 
 
 # Notes / Gotchas
