@@ -2,6 +2,8 @@ Example project using Android Google maps SDK on Android with Jetpack compose.
 
 This has changed within the last year or so. Now there's a new [compose API for Google maps](https://github.com/googlemaps/android-maps-compose). Previously we had to use an `AndroidView`. Technically this new API (`GoogleMap`) still uses an `AndroidView` under the hood, but it's easier to work with.
 
+There's also a new API that makes it easier to set up clustering. Building a `ClusterManager` requires a `GoogleMap` object. It's more easily accessible with the new `MapEffect` composable.
+
 # Features
 
 ## Permissions
@@ -36,9 +38,10 @@ Display your location (if you've accepted the permission).
       - [build.gradle (app)](https://github.com/mitchtabian/Google-Maps-Compose/blob/master/app/build.gradle)
 6. Add your API key to `local.properties`. **Note:** To reference the API key in `local.properties` you'll need the secrets plugin installed. See my [build.gradle (project)](https://github.com/mitchtabian/Google-Maps-Compose/blob/master/build.gradle). It's the `com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin:2.0.1` dependency.
 ```
+# local.properties
 GOOGLE_MAPS_API_KEY=<YOUR_KEY>
 ```
-7. Update your manifest to include the API key. Within the `application` tag.
+7. Update your `AndroidManifest.xml` to include the API key. Within the `application` tag.
 ```
 <application
    ...
