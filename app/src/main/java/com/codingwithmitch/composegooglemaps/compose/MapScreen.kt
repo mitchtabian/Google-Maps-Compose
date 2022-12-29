@@ -14,6 +14,7 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
 import com.google.maps.android.compose.*
+import kotlinx.coroutines.launch
 
 @Composable
 fun MapScreen(
@@ -36,6 +37,7 @@ fun MapScreen(
             cameraPositionState = cameraPositionState
         ) {
             val context = LocalContext.current
+            val scope = rememberCoroutineScope()
             MapEffect(state.clusterItems) { map ->
                 if (state.clusterItems.isNotEmpty()) {
                     val clusterManager = setupClusterManager(context, map)
@@ -43,6 +45,18 @@ fun MapScreen(
                     map.setOnMarkerClickListener(clusterManager)
                     state.clusterItems.forEach { clusterItem ->
                         map.addPolygon(clusterItem.polygonOptions)
+                    }
+                    map.setOnMapLoadedCallback {
+                        if (state.clusterItems.isNotEmpty()) {
+                            scope.launch {
+                                cameraPositionState.animate(
+                                    update = CameraUpdateFactory.newLatLngBounds(
+                                        calculateZoneViewCenter(),
+                                        0
+                                    ),
+                                )
+                            }
+                        }
                     }
                 }
             }
@@ -62,17 +76,17 @@ fun MapScreen(
             )
         }
     }
-    // Center camera to include all the Zones.
-    LaunchedEffect(Unit) {
-        if (state.clusterItems.isNotEmpty()) {
-            cameraPositionState.animate(
-                update = CameraUpdateFactory.newLatLngBounds(
-                    calculateZoneViewCenter(),
-                    0
-                ),
-            )
-        }
-    }
+//    // Center camera to include all the Zones.
+//    LaunchedEffect(state.clusterItems) {
+//        if (state.clusterItems.isNotEmpty()) {
+//            cameraPositionState.animate(
+//                update = CameraUpdateFactory.newLatLngBounds(
+//                    calculateZoneViewCenter(),
+//                    0
+//                ),
+//            )
+//        }
+//    }
 }
 
 /**
