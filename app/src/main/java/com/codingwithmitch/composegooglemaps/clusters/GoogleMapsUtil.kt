@@ -1,11 +1,9 @@
 package com.codingwithmitch.composegooglemaps.clusters
 
 /**
- * A set of utility functions for centering the camera given some LatLng points.
- *
+ * A set of utility functions for centering the camera given some [LatLng] points.
  * Author: Mitch Tabian 2022
  */
-
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.LatLngBounds
 
@@ -23,24 +21,19 @@ private data class CameraViewCoord(
 )
 
 fun List<LatLng>.calculateCameraViewPoints(pctView: Double = .25): List<LatLng> {
-    try {
-        val coordMax = findMaxMins()
-        val dy = coordMax.yMax - coordMax.yMin
-        val dx = coordMax.xMax - coordMax.xMin
-        val yT = (dy * pctView) + coordMax.yMax
-        val yB = coordMax.yMin - (dy * pctView)
-        val xR = (dx * pctView) + coordMax.xMax
-        val xL = coordMax.xMin - (dx * pctView)
-        return listOf(
-            LatLng(coordMax.xMax, yT),
-            LatLng(coordMax.xMin, yB),
-            LatLng(xR, coordMax.yMax),
-            LatLng(xL, coordMax.yMin)
-        )
-    } catch (e: Exception){
-        e.printStackTrace()
-        return listOf()
-    }
+    val coordMax = findMaxMins()
+    val dy = coordMax.yMax - coordMax.yMin
+    val dx = coordMax.xMax - coordMax.xMin
+    val yT = (dy * pctView) + coordMax.yMax
+    val yB = coordMax.yMin - (dy * pctView)
+    val xR = (dx * pctView) + coordMax.xMax
+    val xL = coordMax.xMin - (dx * pctView)
+    return listOf(
+        LatLng(coordMax.xMax, yT),
+        LatLng(coordMax.xMin, yB),
+        LatLng(xR, coordMax.yMax),
+        LatLng(xL, coordMax.yMin)
+    )
 }
 
 private fun List<LatLng>.findMaxMins(): CameraViewCoord {
