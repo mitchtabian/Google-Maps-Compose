@@ -6,8 +6,8 @@ import android.graphics.Color
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
-import com.codingwithmitch.composegooglemaps.clusters.QuarantineClusterItem
-import com.codingwithmitch.composegooglemaps.clusters.QuarantineClusterManager
+import com.codingwithmitch.composegooglemaps.clusters.ZoneClusterItem
+import com.codingwithmitch.composegooglemaps.clusters.ZoneClusterManager
 import com.codingwithmitch.composegooglemaps.clusters.calculateCameraViewPoints
 import com.codingwithmitch.composegooglemaps.clusters.getCenterOfPolygon
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -25,7 +25,7 @@ class MapViewModel @Inject constructor(): ViewModel() {
         MapState(
             lastKnownLocation = null,
             clusterItems = listOf(
-                QuarantineClusterItem(
+                ZoneClusterItem(
                     id = "zone-1",
                     title = "Zone 1",
                     snippet = "This is Zone 1.",
@@ -37,7 +37,7 @@ class MapViewModel @Inject constructor(): ViewModel() {
                         fillColor(POLYGON_FILL_COLOR)
                     }
                 ),
-                QuarantineClusterItem(
+                ZoneClusterItem(
                     id = "zone-2",
                     title = "Zone 2",
                     snippet = "This is Zone 2.",
@@ -78,8 +78,8 @@ class MapViewModel @Inject constructor(): ViewModel() {
     fun setupClusterManager(
         context: Context,
         map: GoogleMap,
-    ): QuarantineClusterManager {
-        val clusterManager = QuarantineClusterManager(context, map)
+    ): ZoneClusterManager {
+        val clusterManager = ZoneClusterManager(context, map)
         clusterManager.addItems(state.value.clusterItems)
         return clusterManager
     }

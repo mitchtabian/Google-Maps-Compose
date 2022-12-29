@@ -5,7 +5,7 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.maps.android.clustering.ClusterManager
 import com.google.maps.android.collections.MarkerManager
 
-class QuarantineClusterManager(
+class ZoneClusterManager(
     context: Context,
     googleMap: GoogleMap,
-): ClusterManager<QuarantineClusterItem>(context, googleMap, MarkerManager(googleMap))
+): ClusterManager<ZoneClusterItem>(context, googleMap, MarkerManager(googleMap))
