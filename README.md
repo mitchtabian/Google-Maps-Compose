@@ -22,6 +22,15 @@ Display your location (if you've accepted the permission).
 <br>
 <img src="art/your_location.png" width="25%">
 
+# Google Maps SDK Setup for Android
+1. You'll need a billing account. Create one here https://console.cloud.google.com/billing
+2. Create a new project in cloud console https://console.cloud.google.com/. Once its created switch to that project.
+3. Go to marketplace and enable google maps SDK for the new project https://console.cloud.google.com/marketplace
+   - "Maps SDK for Android"
+   - Enable billing through the billing account your created
+4. Enable google maps in cloud console
+   - Specify "Android apps" and generate a SHA1
+
 # Notes / Gotchas
 1. You will need to enable billing on your google cloud console to complete this example. You won't be charged anything as long as you stay under the daily request limit. Then add your API key to `local.properties`.
 ```
